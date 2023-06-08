@@ -1,12 +1,3 @@
-from django.db.models import Sum
-from django.shortcuts import HttpResponse, get_object_or_404
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import mixins, status, viewsets
-from rest_framework.decorators import action
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.response import Response
-from rest_framework.views import APIView
-
 from api.filters import IngredientFilter, RecipeFilter
 from api.permissions import IsAdminAuthorOrReadOnly
 from api.serializers import (FavouriteSerializer, IngredientSerializer,
@@ -15,8 +6,16 @@ from api.serializers import (FavouriteSerializer, IngredientSerializer,
                              UserSubscribeRepresentSerializer,
                              UserSubscribeSerializer)
 from api.utils import create_model_instance, delete_model_instance
+from django.db.models import Sum
+from django.shortcuts import HttpResponse, get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
 from recipes.models import (Favourite, Ingredient, Recipe, RecipeIngredient,
                             ShoppingCart, Tag)
+from rest_framework import mixins, status, viewsets
+from rest_framework.decorators import action
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from users.models import Subscription, User
 
 
@@ -92,8 +91,8 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
         if request.method == 'DELETE':
             error_message = 'Этого рецепта нет в избранном'
-            return delete_model_instance(request, Favourite,
-                                         recipe, error_message)
+        return delete_model_instance(request, Favourite,
+                                     recipe, error_message)
 
     @action(
         detail=True,
@@ -108,8 +107,8 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
         if request.method == 'DELETE':
             error_message = 'Этого рецепта нет в Вашем списке покупок'
-            return delete_model_instance(request, ShoppingCart,
-                                         recipe, error_message)
+        return delete_model_instance(request, ShoppingCart,
+                                     recipe, error_message)
 
     @action(
         detail=False,
@@ -129,6 +128,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
             amount = ingredient['ingredient_amount']
             shopping_list.append(f'\n{name} - {amount}, {unit}')
         response = HttpResponse(shopping_list, content_type='text/plain')
-        response['Content-Disposition'] = \
-            'attachment; filename="shopping_cart.txt"'
+        response['Content-Disposition'] = (
+            'attachment; filename="shopping_cart.txt"')
         return response

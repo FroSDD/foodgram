@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.contrib import admin
-
 from recipes.models import (Favourite, Ingredient, Recipe, RecipeIngredient,
                             ShoppingCart, Tag)
 
@@ -23,12 +22,13 @@ class IngredientAdmin(admin.ModelAdmin):
 
 class RecipeIngredientInline(admin.TabularInline):
     model = RecipeIngredient
+    extra = 2
 
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ('pk', 'name', 'author', 'favourites_amount')
-    search_fields = ('name', 'author')
+    search_fields = ('name', 'author', 'tags')
     list_filter = ('name', 'author', 'tags')
     empty_value_display = settings.EMPTY_VALUE
     inlines = [

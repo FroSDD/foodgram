@@ -1,6 +1,5 @@
 from django.core.validators import MinValueValidator
 from django.db import models
-
 from users.models import User
 
 
@@ -11,7 +10,7 @@ class Tag(models.Model):
         unique=True,
     )
     color = models.CharField(
-        'Цает',
+        'Цвет',
         max_length=7,
         unique=True,
     )
@@ -39,8 +38,8 @@ class Ingredient(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Ингридиент'
-        verbose_name_plural = 'Ингридиенты'
+        verbose_name = 'Ингредиент'
+        verbose_name_plural = 'Ингредиенты'
 
     def __str__(self):
         return self.name
