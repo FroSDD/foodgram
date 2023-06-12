@@ -14,7 +14,7 @@ services:
       - ./.env
 
   web:
-    build: ..backend/foodgram
+    image: frosd9409/backend
     restart: always
     volumes:
       - static_value:/app/static_back/
