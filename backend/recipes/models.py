@@ -7,7 +7,7 @@ from users.models import User
 
 
 class Recipe(models.Model):
-    tags = models.ManyToManyField(Tag, related_name='recipes')
+    tags = models.ManyToManyField(Tag)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='recipes'
     )
