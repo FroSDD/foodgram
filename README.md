@@ -1,19 +1,12 @@
-# Foodgram - продуктовый помощник
+## Foodgram - продуктовый помощник
 
-![Github actions](https://github.com/FroSDD/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
+![Github actions](https://github.com/FroSDD/foodgram/actions/workflows/foodgram_workflow.yml/badge.svg)
 
 
 Foodgram - продуктовый помощник это приложение, в котором авторизированные пользователи могут публиковать рецепты, подписываться на рецепты других пользователей, добавлять чужие рецепты в список «Избранное». Благодаря данному сервису, перед походом в магазин можно скачать список продуктов, необходимых для приготовления одного или нескольких выбранных блюд.
 
-### Проект доступен по ссылке:
-http://158.160.103.137
 
-### Админка для входа:
-Логин: admin
-Почта: admin@admin.ru
-пароль: 432165qQ
-
-### Для запуска проекта необходимо:
+## Установка
 
 Установить на сервере docker и docker-compose. Скопировать на сервер файлы docker-compose.yaml и default.conf:
 
@@ -84,7 +77,7 @@ sudo docker-compose exec web python manage.py load_data_csv --path <путь_к_
 
 Клонировать репозиторий и перейти в него в командной строке:
 
-``` git@github.com:FroSDD/foodgram-project-react.git ``` 
+``` git@github.com:FroSDD/foodgram.git ``` 
 ``` cd foodgram-project-react ``` 
 
 Запустить docker-compose:
@@ -121,12 +114,11 @@ docker-compose exec web python manage.py collectstatic --no-input
 http://localhost/
 ```
 
-
 ### Как запустить проект локально:
 
 Клонировать репозиторий и перейти в него в командной строке:
 
-``` git@github.com:FroSDD/foodgram-project-react.git ``` 
+``` git@github.com:FroSDD/foodgram.git ``` 
 ``` cd foodgram-project-react ``` 
 
 Создать и активировать виртуальное окружение:
@@ -153,6 +145,28 @@ http://localhost/
 
 ``` python3 manage.py runserver ``` 
 
-### Технологии:
+### Использованные технологии:
+- Python
+- Django
+- DRF
+- Nginx
+- Docker
+- Docker-compose
+- Postgresql
+- Postgresql
 
-Python 3.9, Django 3.2, DRF 3.13, Nginx, Docker, Docker-compose, Postgresql, Github Actions.  
+### Развернутый проект: 
+http://158.160.103.137
+
+### Админка для входа:
+Логин: admin
+
+Почта: admin@admin.ru
+
+пароль: 432165qQ
+
+
+### Автор: 
+[Anton Novikov](https://github.com/FroSDD/)
+
+E-mail: novikov.an_v@mail.ru
